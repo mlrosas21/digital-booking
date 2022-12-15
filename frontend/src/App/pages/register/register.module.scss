@@ -1,0 +1,65 @@
+@import "../../scss/colors";
+
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-books;
+
+    .formContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 330px;
+
+        .namesContainer {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: $red-books;
+        }
+
+        .changeForm {
+            margin-top: 12px;
+            font-size: 12px;
+            font-weight: 500;
+            color: $black2-books;
+        }
+    }
+
+    .errorDiv{
+        text-align: center;
+        color: #FF0000;
+        width: 100%;
+        background-color: #ff000035;
+        padding: 6px;
+        border-radius: 5px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+
+    .main {
+        .formContainer {
+            width: 430px;
+
+            .namesContainer {
+                flex-direction: row;
+
+                input[name=name] {
+                    margin-right: 6px;
+                }
+    
+                input[name=surname] {
+                    margin-left: 6px;
+                }
+            }
+        }
+    }
+}

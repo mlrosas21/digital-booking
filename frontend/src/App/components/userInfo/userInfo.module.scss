@@ -1,0 +1,84 @@
+@import "../../scss/colors";
+
+.userLoggedDrawer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .adminContainer { 
+        display: none;
+    }
+
+    .userInfo{
+        display: flex;
+        align-items: flex-end;
+        flex-direction: column;
+
+        .logoutBtnDrawer{
+            display: none;
+        }
+
+        .userName{
+            color: $black1-books;
+            font-weight: 800;
+            cursor: pointer;
+        }
+    }
+}
+
+.userLoggedHeader{
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 10px;
+
+    .adminContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        gap: 10px;
+
+        a {
+            text-decoration: none;
+            color: black;
+            font-weight: 700;
+        }
+
+        .verticalRule {
+            height: 40px;
+            border: 1px solid $red-books;
+        }
+    }
+
+    .avatar{
+        align-self: 'center';
+    }
+    
+    .userInfo{
+        display: flex;
+        flex-direction: column;
+
+        .greetingsSpan{
+            display: flex;
+            justify-content: space-between;
+
+            .logoutBtn{
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                color: $black1-books;
+                margin: 0;
+            }
+        }
+
+        .userName{
+            color: $red-books;
+            font-weight: 800;
+            cursor: pointer;
+        }
+    }
+}

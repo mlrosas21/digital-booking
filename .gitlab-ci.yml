@@ -1,0 +1,100 @@
+image: maven:latest
+
+# Solo si se sube main
+workflow:
+  rules:
+  - if: "$CI_COMMIT_BRANCH == 'main'"
+
+stages:
+  - clean
+  - build
+  # - test
+  - deploy
+
+clean:
+  rules:
+    - changes:
+      - digital-booking-6-backend/**/*
+  stage: clean
+  script:
+    - cd digital-booking-6-backend/
+    - echo "Cleaning leftovers from previous builds"
+    - mvn clean
+    - mvn wrapper:wrapper
+    - echo "Finished clean"
+
+build-back:
+  rules:
+    - changes: 
+      - digital-booking-6-backend/**/*
+  stage: build
+  script:
+    - cd digital-booking-6-backend/
+    - echo "Building app spring..."
+    - mvn package
+    - echo "Finished building the app spring."
+  artifacts:    
+    paths:      
+      # Build folder      
+      - digital-booking-6-backend/target/DigitalBooking-BE-G6-0.0.1-SNAPSHOT.jar
+    expire_in: 1 hour
+
+build-front:
+  rules:
+    - changes: 
+      - digital-booking-6-frontend/**/*
+  image: node:latest
+  stage: build
+  script:
+    - cd digital-booking-6-frontend/
+    - npm install   
+    - echo "Building app react..."
+    - CI=false npm run build
+    - ls -la
+    - echo "Finished building the app react."
+  artifacts:    
+    paths:      
+      # Build folder      
+      - digital-booking-6-frontend/build/
+    expire_in: 1 hour
+
+# test-front:
+#   rules:
+#     - changes: 
+#       - digital-booking-6-frontend/**/*
+#   image: node:latest
+#   stage: test
+#   script:
+#     - cd digital-booking-6-frontend/src
+#     - npm install
+#     - npm run test
+      
+deploy-backend:
+  rules:
+    - changes:
+      - digital-booking-6-backend/**/*
+  stage: deploy
+  dependencies: 
+    - build-back
+  script:
+    - cd digital-booking-6-backend/
+    - chmod 400 $AWS_PEM
+    - echo "Copy files to EC2"
+    - scp -oStrictHostKeyChecking=no -i $AWS_PEM $DB_VARIABLES ec2-user@$AWS_SERVER_EC2:/home/ec2-user
+    - scp -oStrictHostKeyChecking=no -i $AWS_PEM target/DigitalBooking-BE-G6-0.0.1-SNAPSHOT.jar ec2-user@$AWS_SERVER_EC2:/home/ec2-user
+    - echo "Stop all services"
+    - ssh -oStrictHostKeyChecking=no -i $AWS_PEM ec2-user@$AWS_SERVER_EC2 "sudo killall -9 java"
+    - echo "Deploying started..."
+    - ssh -oStrictHostKeyChecking=no -i $AWS_PEM ec2-user@$AWS_SERVER_EC2 "source /home/ec2-user/DB_VARIABLES & nohup sudo java -Dserver.port=8080 -DDB_ENDPOINT=$DB_ENDPOINT -DDB_NAME=$DB_NAME -DDB_USER=$DB_USER -DDB_PW=$DB_PW -jar DigitalBooking-BE-G6-0.0.1-SNAPSHOT.jar > /home/ec2-user/spring.log 2>&1 &"
+    - echo "Finished deploying the app."
+
+deploy-front:
+  rules:
+    - changes: 
+      - digital-booking-6-frontend/**/*
+  image: registry.gitlab.com/gitlab-org/cloud-deploy/aws-base:latest
+  stage: deploy
+  dependencies: 
+    - build-front
+  script:
+    - aws s3 sync digital-booking-6-frontend/build/ s3://$AWS_S3_BUCKET/ --delete

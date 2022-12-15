@@ -1,0 +1,74 @@
+@import "../../../scss/colors";
+
+.inputContainer {
+    margin-top: 6px;
+    margin-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+
+    .label {
+        font-size: 12px;
+        font-weight: 500;
+        color: $black2-books;
+
+        align-self: flex-start;
+        margin: 0;
+        margin-bottom: 6px;
+    }
+    
+    .input {
+        height: 40px;
+        box-shadow: 0px 1px 5px 0px #00000026;
+        background-color: $white-books;
+    
+        border-radius: 5px;
+        border: 1px solid $white-books;
+    
+        outline: none;
+
+        padding-left: 12px;
+    
+        &:invalid {
+            background-color: #FFE1E1;
+            border: 1px solid #FF0000;
+        }
+
+        &[type=password] {
+            color: $black2-books;
+            letter-spacing: 3px;
+        }
+    }
+
+    .invalidInput{
+        background-color: #FFE1E1;
+        border: 1px solid #FF0000;
+    }
+
+    
+    .subLabel {
+        font-size: 12px;
+        font-weight: 500;
+        color: #FF0000;
+
+        align-self: flex-end;
+        margin-top: 2px;
+    }
+
+    .showPassButton {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        position: absolute;
+        right: 12px;
+        top: 30px;
+
+
+        outline: none;
+        border: none;
+        padding: 0;
+        background: none;
+    }
+}

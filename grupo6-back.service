@@ -1,0 +1,13 @@
+[Unit]
+Description=Java PI service
+
+[Service]
+EnvironmentFile=/home/ec2-user/DB_VARIABLES
+User=root
+WorkingDirectory=/home/ec2-user
+ExecStart=/usr/bin/java -Dserver.port=8080 -DDB_ENDPOINT=$DB_ENDPOINT -DDB_NAME=$DB_NAME -DDB_USER=$DB_USER -DDB_PW=$DB_PW -jar /home/ec2-user/DigitalBooking-BE-G6-0.0.1-SNAPSHOT.jar > /home/ec2-user/spring.log
+ExecStop=killall -9 java
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
