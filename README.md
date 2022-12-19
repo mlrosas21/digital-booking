@@ -12,7 +12,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="[https://github.com/github_username/repo_name](https://github.com/mlrosas21/digital-booking)">
+  <a href="https://github.com/mlrosas21/digital-booking">
     <img src="frontend/src/imgs/logos/logo_1.png" alt="Digital Booking Logo" width="80" height="60">
   </a>
 
@@ -22,7 +22,7 @@
     <a href="https://www.digitalhouse.com/ar/productos/programacion/certified-tech-developer"><strong>Certified Tech Developer</strong></a> career's final project where the knowledge of back end, front end, databases, infrastructure and testing are combined to achieve a productive cloud deployed app.
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the app @ AWS »</strong></a>
+    <a href="http://0521ptc8n2-grupo6-bk-frontend.s3-website.us-east-2.amazonaws.com/"><strong>Explore the deployed app @ AWS »</strong></a>
   </p>
 </div>
 
@@ -35,16 +35,11 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#methodology">Methodology</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
+    <li><a href="#personal-role">Personal role</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
 </details>
@@ -54,14 +49,27 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+<img src="Home-Digital-Booking.png"></img>
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `mlrosas21`, `repo_name`, `email_client`, `email`, `project_title`, `project_description`
+Website developed as the final project Certified Tech Developer career, created by Digital House, sponsored by MercadoLibre and Globant.
+
+The website is a booking of accommodations where a user can create their accounts, log in, filter accomodations by category/date/city, explore the products, being able to make a reservation in one of the accomodations if wanted. On the other hand, administrators of the website can create products, modify and delete them.
+
+We worked as a group of 5 developers using agile methodologies, the front end is 100% responsive, meeting the requirements of a prototype that was provided to us in Figma and the back end is connected by an API developed in Java. The deployment was carried out in AWS, tested with different techniques (black box & white box)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Methodology
 
+**SCRUM** was the agile methodology chosen to work with this project, respecting the roles of Scrum Master, Product Owner, the figure of the Client and Tech Leaders. The scrum ceremonies carried out were: sprint lecture, sprint planning, dailies, weeklies, retros and sprint reviews. 
 
+The project was divided in 4 sprints, each one having as core objective a feature: home page, products, bookings and create product page.
+
+As a team, we used the planning poker technique to estimate the effort of the tasks asigned and to priorize those that had a greater impact on each sprint. We used boards to do the follow up of the tasks of each member. Each task was carried out in a different branch of our repositories so we could avoid major conflicts while developing the features.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- BUILT WITH -->
 ### Built With
 
 * [![React][React.js]][React-url]
@@ -86,37 +94,14 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- PERSONAL ROLE -->
+## Personal Role
 
+Personally, I took the role of back end developer & database administrator, taking part of the front end development as well when needed. 
 
-<!-- GETTING STARTED -->
-## Getting Started
+I developed the API by myself, trying to use the best practices throughout the project. The API was built using Spring framework and 3 layer arquitecture: Presentation Layer, Business Layer & Persistence Layer. Global exception handler was used, along with custom RunTime Exceptions, for error and business logic handling, as well as a custom error dictionary to facilitate error detection for back end administrators. JWT was implemented using Spring Security to restrict access to specific endpoint available only for admins (products administration, user administration, etc.)
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
-
-### Installation
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/mlrosas21/repo_name.git
-   ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
+<a href="Script DB.txt">Database creation scripte</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -129,18 +114,6 @@ Martín Rosas - [![linkedin][linkedin-shield]][linkedin-url] - martinrosasortman
 Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
